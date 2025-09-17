@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <title>Test</title>
+</head>
+<body>
+    <h1>test</h1>
+    <script>
+        let test = false;
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // hlídací smyčka
+        async function loop() {
+            while (true) {
+                if (test === true) {
+                    // tady spustíme nekonečný blokující cyklus
+                    while (true) {
+                        console.log("test");
+                    }
+                }
+                await sleep(100); // kontroluje každých 100ms
+            }
+        }
+
+        loop();
+    </script>
+</body>
+</html>
